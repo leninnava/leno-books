@@ -9,8 +9,7 @@ const checkAnimationAPISupport = () => {
 const fetchPage = async (url) => {
 	const response = await fetch(url)
 	const text = await response.text()
-
-	const [, data] = text.match(/(?<!<body[^>]*>)(<body[^>]*>[\s\S]*?<\/body>)(?![\s\S]*<\/body>)/i)
+	const [, data] = text.match(/<body[^>]*>([\s\S]*?)<\/body>/i)
 	return data
 }
 
