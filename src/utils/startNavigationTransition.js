@@ -23,7 +23,7 @@ export const startNavigationTransition = () => {
 				async handler () {
 					const data = await fetchPage(destinationURL.pathname)
 					document.startViewTransition(() => {
-						console.log(data);
+						console.log(data)
 						document.body.innerHTML = data
 						document.documentElement.scrollTop = 0
 					})
