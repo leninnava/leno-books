@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 import { books } from '../data/books.js'
 const { book } = Astro.params
-const bookData = books.find(bookArticle => bookArticle.title === book)
+const bookData = books.find(bookArticle => bookArticle.title.toLowerCase().split(' ').join('-') === book)
 if (!bookData) {
     return Astro.redirect('/404');
 }
@@ -10,7 +10,8 @@ if (!bookData) {
 <Layout title={`${bookData.title} - Astro and Web Animations API demo`}>
   <main class="md:min-h-screen m-auto p-4 max-w-5xl grid sm:grid-cols-2 gap-4 md:gap-14 content-center">
       <picture class='relative'>
-        <img class='md:h-[500px] w-full aspect-[3/4] object-cover object-top' src={bookData.img} alt="">
+        <img class='md:h-[500px] w-full aspect-[3/4] object-cover object-top' src={bookData.img} alt={bookData.title} style={`view-transition-name: ${bookData.title.split(' ').join('')}`}
+        >
         <div class='w-full justify-center flex flex-col gap-2 my-4'>
             <button class="h-10 w-full px-3 bg-blue-500 text-white">Buy</button>
             <button class="h-10 w-full px-3 bg-blue-500 text-white">Goodreads</button>

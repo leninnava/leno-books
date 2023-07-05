@@ -7,9 +7,11 @@ const {
 ---
 
 <li id={id}>
-    <a href={`/${title.replace('-', '')}`}>
+    <a href={`/${title.toLowerCase().split(' ').join('-')}`}>
         <img class='aspect-[3/4] object-cover transition-all hover:contrast-125 hover:shadow-lg'
         src={img}
-        alt={`${title} book cover`}>
+        alt={`${title} book cover`}
+        style={`view-transition-name: ${title.split(' ').join('')}`}
+        >
     </a>
 </li>
